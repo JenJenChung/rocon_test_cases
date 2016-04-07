@@ -6,8 +6,7 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "remote_publisher") ;
   ros::NodeHandle nh ;
   
-  ros::Publisher pub = nh.advertise<geometry_msgs::Twist>("hub_topic", 10, true) ;
-  ros::Subscriber sub = nh.subscribe("hub_topic") ;
+  ros::Publisher pub_dummy = nh.advertise<geometry_msgs::Twist>("hub_topic", 10, true) ;
   ros::Publisher pub = nh.advertise<geometry_msgs::Twist>("remote_topic", 10, true) ;
   
   geometry_msgs::Twist msg ;
