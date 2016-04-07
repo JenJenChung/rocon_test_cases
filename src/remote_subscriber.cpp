@@ -21,9 +21,9 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "remote_subscriber") ;
   ros::NodeHandle nh ;
   
-  ros::Publisher pub = nh.advertise<geometry_msgs::Twist>("received_hub_topic", 50, true) ;
+  ros::Publisher pub = nh.advertise<geometry_msgs::Twist>("/aadi1/received_hub_topic", 50, true) ;
   
-  ros::Subscriber sub = nh.subscribe("hub_topic", 10, &hubCallback) ;
+  ros::Subscriber sub = nh.subscribe("/aadi1/hub_topic", 10, &hubCallback) ;
 
   ros::spin();
   
