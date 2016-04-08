@@ -19,15 +19,15 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(remote_publisher src/remote_publisher.cpp)
-target_link_libraries(remote_publisher ${catkin_LIBRARIES})
-add_dependencies(remote_publisher ${catkin_EXPORTED_TARGETS})
+add_executable(aadi_publisher src/aadi_publisher.cpp)
+target_link_libraries(aadi_publisher ${catkin_LIBRARIES})
+add_dependencies(aadi_publisher ${catkin_EXPORTED_TARGETS})
+
+add_executable(aadi_subscriber src/aadi_subscriber.cpp)
+target_link_libraries(aadi_subscriber ${catkin_LIBRARIES})
+add_dependencies(aadi_subscriber ${catkin_EXPORTED_TARGETS})
 
 add_executable(hub_subscriber src/hub_subscriber.cpp)
 target_link_libraries(hub_subscriber ${catkin_LIBRARIES})
 add_dependencies(hub_subscriber ${catkin_EXPORTED_TARGETS})
-
-add_executable(remote_subscriber src/remote_subscriber.cpp)
-target_link_libraries(remote_subscriber ${catkin_LIBRARIES})
-add_dependencies(remote_subscriber ${catkin_EXPORTED_TARGETS})
 
