@@ -1,17 +1,14 @@
 #include "ros/ros.h"
-#include "geometry_msgs/Twist.h"
+#include "std_msgs/String.h"
+#include "ros/console.h"
 
 ros::Publisher pub ;
 
-void remoteCallback(const geometry_msgs::Twist& msg)
+void remoteCallback(const std_msgs::String& msg)
 {
-    geometry_msgs::Twist cmd ;
-    cmd.linear.x = msg.linear.x ;
-    cmd.linear.y = msg.linear.y ;
-    cmd.linear.z = msg.linear.z ;
-    cmd.angular.x = msg.angular.x ;
-    cmd.angular.y = msg.angular.y ;
-    cmd.angular.z = msg.angular.z ;
+    ROS_INFO_STREAM("Message received from aadi gate: " << msg.data) ;
+    std_msgs::String cmd ;
+    cmd.data = msg.data + " and hello from hub" ;
     
     pub.publish(cmd) ;
 }
@@ -21,9 +18,9 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "hub_subscriber") ;
   ros::NodeHandle nh ;
   
-  ros::Publisher pub = nh.advertise<geometry_msgs::Twist>("hub_topic", 10, true) ;
+  pub = nh.advertise<std_msgs::String>("hub_topic", 10, true) ;
   
-  ros::Subscriber sub = nh.subscribe("/aadi1/remote_topic", 10, &remoteCallback) ;
+  ros::Subscriber sub = nh.subscribe("/aadi_topic", 10, &remoteCallback) ;
 
   ros::spin();
   

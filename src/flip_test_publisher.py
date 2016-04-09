@@ -13,7 +13,7 @@ req = gateway_srvs.RemoteRequest()
 req.cancel = False
 req.remotes = []
 rule = gateway_msgs.Rule()
-rule.name = '/vostro_topic'
+rule.name = '/aadi_topic'
 rule.type = gateway_msgs.ConnectionType.PUBLISHER
 rule.node = '/aadi_publisher'
 req.remotes.append(gateway_msgs.RemoteRule(remote_gateway,rule))
